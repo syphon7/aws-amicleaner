@@ -24,6 +24,7 @@ class App:
         self.full_report = args.full_report
         self.force_delete = args.force_delete
         self.ignore_key = args.ignore_key
+        self.ignore_values = args.ignore_values
         self.mapping_strategy = {
             "key": self.mapping_key,
             "values": self.mapping_values,
@@ -46,7 +47,7 @@ class App:
             excluded_amis += f.fetch_zeroed_asg()
             excluded_amis += f.fetch_instances()
             if self.ignore_key:
-                excluded_amis += f.fetch_ignored(self.ignore_key)
+                excluded_amis += f.fetch_ignored(self.ignore_key, self.ignore_values)
 
         candidates = [v
                       for k, v

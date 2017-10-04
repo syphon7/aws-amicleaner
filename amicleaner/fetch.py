@@ -74,12 +74,12 @@ class Fetcher:
 
         return amis
 
-    def fetch_ignored(self, tag):
+    def fetch_ignored(self, tag, values):
 
         """
         Find AMIs with the ignore tag
         """
-        filters = [{'Name':('tag:'+tag), 'Values':['*']}]
+        filters = [{'Name':('tag:'+tag), 'Values':[values]}]
         resp = self.ec2.describe_images(Owners=['self'], Filters=filters)
 
         amis = []
