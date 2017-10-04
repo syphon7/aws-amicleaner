@@ -104,6 +104,9 @@ def parse_args(args):
                         action="store_true",
                         help="Check and clean orphaned snapshots")
 
+    parser.add_argument("--ignore-key",
+                        dest='ignore_key',
+                        help="Key to ignore")
     parsed_args = parser.parse_args(args)
     if parsed_args.mapping_key and not parsed_args.mapping_values:
         print "missing mapping-values\n"
