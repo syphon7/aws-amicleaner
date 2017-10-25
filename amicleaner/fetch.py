@@ -85,9 +85,18 @@ class Fetcher:
         amis = []
         for ami in resp.get("Images"):
             amis.append(ami['ImageId'])
+        return amis
 
-        print amis
+    def fetch_beforedate(self, before_date):
 
+        """
+        Find AMIs with the ignore tag
+        """
+        resp = self.ec2.describe_images(Owners=['self'])
+        amis = []
+        for ami in resp.get("Images"):
+            if ami['CreationDate'] > before_date:
+                amis.append(ami['ImageId'])
         return amis
 
     def fetch_instances(self):

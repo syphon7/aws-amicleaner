@@ -25,6 +25,7 @@ class App:
         self.force_delete = args.force_delete
         self.ignore_key = args.ignore_key
         self.ignore_values = args.ignore_values
+        self.before_date = args.ignore_after_date
         self.mapping_strategy = {
             "key": self.mapping_key,
             "values": self.mapping_values,
@@ -48,6 +49,10 @@ class App:
             excluded_amis += f.fetch_instances()
             if self.ignore_key:
                 excluded_amis += f.fetch_ignored(self.ignore_key, self.ignore_values)
+            if self.before_date:
+                excluded_amis += f.fetch_beforedate(self.before_date)
+
+
 
         candidates = [v
                       for k, v
