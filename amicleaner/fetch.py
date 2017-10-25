@@ -74,6 +74,22 @@ class Fetcher:
 
         return amis
 
+    def fetch_ignored(self, tag, values):
+
+        """
+        Find AMIs with the ignore tag
+        """
+        filters = [{'Name':('tag:'+tag), 'Values':[values]}]
+        resp = self.ec2.describe_images(Owners=['self'], Filters=filters)
+
+        amis = []
+        for ami in resp.get("Images"):
+            amis.append(ami['ImageId'])
+
+        print amis
+
+        return amis
+
     def fetch_instances(self):
 
         """ Find AMIs for not terminated EC2 instances """
