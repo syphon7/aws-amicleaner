@@ -99,6 +99,22 @@ class Fetcher:
                 amis.append(ami['ImageId'])
         return amis
 
+
+    def fetch_ignore_list(self, ignore_from_file):
+
+        """
+        Find AMIs with the ignore tag
+        """
+        amis=[]
+        with open(ignore_from_file, 'r') as ami_file:
+            amilist = ami_file.read().split(',')
+        for ami in amilist:
+            t_ami = ami.strip().replace("\n",'')
+            amis.append(t_ami)
+        print amis
+        return amis
+
+
     def fetch_instances(self):
 
         """ Find AMIs for not terminated EC2 instances """
