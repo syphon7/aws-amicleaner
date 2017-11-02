@@ -114,7 +114,7 @@ def parse_args(args):
 
     parser.add_argument("--ignore-after-date",
                         dest='ignore_after_date',
-                        help="Ignore before this date")
+                        help="Ignore everything before this date")
 
     parser.add_argument("--ignore-from-file",
                         dest='ignore_from_file',

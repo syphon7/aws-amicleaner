@@ -111,7 +111,6 @@ class Fetcher:
         for ami in amilist:
             t_ami = ami.strip().replace("\n",'')
             amis.append(t_ami)
-        print amis
         return amis
 
 
