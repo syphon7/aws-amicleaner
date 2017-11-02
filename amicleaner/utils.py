@@ -114,7 +114,11 @@ def parse_args(args):
 
     parser.add_argument("--ignore-after-date",
                         dest='ignore_after_date',
-                        help="Ignore before this date")
+                        help="Ignore everything before this date")
+
+    parser.add_argument("--ignore-from-file",
+                        dest='ignore_from_file',
+                        help="Ignore everything in this file")
 
     parsed_args = parser.parse_args(args)
     if parsed_args.mapping_key and not parsed_args.mapping_values:

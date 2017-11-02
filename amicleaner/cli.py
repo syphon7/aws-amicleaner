@@ -26,6 +26,7 @@ class App:
         self.ignore_key = args.ignore_key
         self.ignore_values = args.ignore_values
         self.before_date = args.ignore_after_date
+        self.ignore_from_file = args.ignore_from_file
         self.mapping_strategy = {
             "key": self.mapping_key,
             "values": self.mapping_values,
@@ -51,6 +52,8 @@ class App:
                 excluded_amis += f.fetch_ignored(self.ignore_key, self.ignore_values)
             if self.before_date:
                 excluded_amis += f.fetch_beforedate(self.before_date)
+            if self.ignore_from_file:
+                excluded_amis += f.fetch_ignore_list(self.ignore_from_file)
 
 
 
